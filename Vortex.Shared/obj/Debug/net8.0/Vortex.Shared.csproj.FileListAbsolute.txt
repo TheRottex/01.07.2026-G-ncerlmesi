@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\bin\Debug\net8.0\Vortex.Shared.deps.json
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\bin\Debug\net8.0\Vortex.Shared.dll
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\bin\Debug\net8.0\Vortex.Shared.pdb
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\Vortex.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\Vortex.Shared.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\Vortex.Shared.AssemblyInfo.cs
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\Vortex.Shared.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\Vortex.Shared.dll
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\refint\Vortex.Shared.dll
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\Vortex.Shared.pdb
+C:\Users\User\Desktop\Avlone Uı VortexAI\Vortex.Shared\obj\Debug\net8.0\ref\Vortex.Shared.dll

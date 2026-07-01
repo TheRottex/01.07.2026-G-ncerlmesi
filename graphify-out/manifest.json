@@ -1,0 +1,772 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1782912111.9814012,
+    "ast_hash": "598cb075410bcd95220ac90bbb60344a",
+    "semantic_hash": "598cb075410bcd95220ac90bbb60344a"
+  },
+  "Vortex.Admin/Program.cs": {
+    "mtime": 1782688222.6640155,
+    "ast_hash": "1f7d5e3b5fca020f505f9288c2c5201f",
+    "semantic_hash": "1f7d5e3b5fca020f505f9288c2c5201f"
+  },
+  "Vortex.Admin/Properties/launchSettings.json": {
+    "mtime": 1782686574.6460774,
+    "ast_hash": "75aa8bc229221180f90591c52b57b4ff",
+    "semantic_hash": "75aa8bc229221180f90591c52b57b4ff"
+  },
+  "Vortex.Admin/Vortex.Admin.csproj": {
+    "mtime": 1782686592.1592615,
+    "ast_hash": "9cfbfad00e42a5fb81262a839a69b4a7",
+    "semantic_hash": "9cfbfad00e42a5fb81262a839a69b4a7"
+  },
+  "Vortex.Admin/appsettings.Development.json": {
+    "mtime": 1782686574.6309803,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "Vortex.Admin/appsettings.json": {
+    "mtime": 1782686574.6309803,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "Vortex.Desktop/App.axaml.cs": {
+    "mtime": 1782693170.1442368,
+    "ast_hash": "76d50a4ddad487adc2fab9572051e155",
+    "semantic_hash": "76d50a4ddad487adc2fab9572051e155"
+  },
+  "Vortex.Desktop/MainWindow.axaml.cs": {
+    "mtime": 1782688318.6182883,
+    "ast_hash": "521c15fbdcad586752998c2b5491ed53",
+    "semantic_hash": "521c15fbdcad586752998c2b5491ed53"
+  },
+  "Vortex.Desktop/Program.cs": {
+    "mtime": 1782688246.4886038,
+    "ast_hash": "e2990ffa7d8a283e70f54d2882f0913c",
+    "semantic_hash": "e2990ffa7d8a283e70f54d2882f0913c"
+  },
+  "Vortex.Desktop/Services/BackendClient.cs": {
+    "mtime": 1782697843.593745,
+    "ast_hash": "a1a1a5f2e53d265778cb852b03f7e0ca",
+    "semantic_hash": "a1a1a5f2e53d265778cb852b03f7e0ca"
+  },
+  "Vortex.Desktop/Services/DesktopAuthenticationService.cs": {
+    "mtime": 1782695565.6244414,
+    "ast_hash": "c66619b29d595986f1cd62b0ebbaff3b",
+    "semantic_hash": "c66619b29d595986f1cd62b0ebbaff3b"
+  },
+  "Vortex.Desktop/Services/DesktopLogService.cs": {
+    "mtime": 1782695014.472695,
+    "ast_hash": "c181c1ddfa2c0032b7dafab7ca96c289",
+    "semantic_hash": "c181c1ddfa2c0032b7dafab7ca96c289"
+  },
+  "Vortex.Desktop/Services/TokenStorageService.cs": {
+    "mtime": 1782693057.410785,
+    "ast_hash": "8833925691415af79b0144c9684d7031",
+    "semantic_hash": "8833925691415af79b0144c9684d7031"
+  },
+  "Vortex.Desktop/ViewModels/MainWindowViewModel.cs": {
+    "mtime": 1782696938.6616647,
+    "ast_hash": "717ecd3f94ea3cc12a6e6378eb76c588",
+    "semantic_hash": "717ecd3f94ea3cc12a6e6378eb76c588"
+  },
+  "Vortex.Desktop/Vortex.Desktop.csproj": {
+    "mtime": 1782688236.9261284,
+    "ast_hash": "42455ef6ffa76231679274c3a1ec68b5",
+    "semantic_hash": "42455ef6ffa76231679274c3a1ec68b5"
+  },
+  "Vortex.LocalAgent/Program.cs": {
+    "mtime": 1782688192.5351622,
+    "ast_hash": "ce3fdfd1c8e2af745fc0670db3468566",
+    "semantic_hash": "ce3fdfd1c8e2af745fc0670db3468566"
+  },
+  "Vortex.LocalAgent/Properties/launchSettings.json": {
+    "mtime": 1782686575.352934,
+    "ast_hash": "8c24d7c1ea8994d3915724715d28f0ee",
+    "semantic_hash": "8c24d7c1ea8994d3915724715d28f0ee"
+  },
+  "Vortex.LocalAgent/Vortex.LocalAgent.csproj": {
+    "mtime": 1782686592.5308306,
+    "ast_hash": "9cfbfad00e42a5fb81262a839a69b4a7",
+    "semantic_hash": "9cfbfad00e42a5fb81262a839a69b4a7"
+  },
+  "Vortex.LocalAgent/appsettings.Development.json": {
+    "mtime": 1782686575.3380895,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "Vortex.LocalAgent/appsettings.json": {
+    "mtime": 1782686575.3398397,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "Vortex.Server/Data/Migrations/001_initial.sql": {
+    "mtime": 1782688503.9152231,
+    "ast_hash": "0f600ec01c69039e38423ea7a3d73e80",
+    "semantic_hash": "0f600ec01c69039e38423ea7a3d73e80"
+  },
+  "Vortex.Server/Data/Migrations/002_hermes_agent_isolation.sql": {
+    "mtime": 1782691155.3734403,
+    "ast_hash": "55e97ac2088169341901fe06d19ae7f6",
+    "semantic_hash": "55e97ac2088169341901fe06d19ae7f6"
+  },
+  "Vortex.Server/Data/Migrations/003_desktop_auth_sessions.sql": {
+    "mtime": 1782692520.0649767,
+    "ast_hash": "bf42b77e62dabb9886d3bfa5dcaf3f3f",
+    "semantic_hash": "bf42b77e62dabb9886d3bfa5dcaf3f3f"
+  },
+  "Vortex.Server/Data/VortexDb.cs": {
+    "mtime": 1782914889.8899987,
+    "ast_hash": "b2a6ec1747de8858787d617eceef11c3",
+    "semantic_hash": ""
+  },
+  "Vortex.Server/Program.cs": {
+    "mtime": 1782915045.0335612,
+    "ast_hash": "7783d3f3bb312dfee68aa02564666c37",
+    "semantic_hash": ""
+  },
+  "Vortex.Server/Properties/launchSettings.json": {
+    "mtime": 1782686573.799005,
+    "ast_hash": "560eb5ec339c253bcec190e16fe6336b",
+    "semantic_hash": "560eb5ec339c253bcec190e16fe6336b"
+  },
+  "Vortex.Server/Services/AgentServices.cs": {
+    "mtime": 1782914466.4464364,
+    "ast_hash": "7ffd799f61c46e6644d4f20e6033bfe8",
+    "semantic_hash": ""
+  },
+  "Vortex.Server/Services/AuthServices.cs": {
+    "mtime": 1782692597.6433449,
+    "ast_hash": "2796b98be2642c5b62c8ee151339b460",
+    "semantic_hash": "2796b98be2642c5b62c8ee151339b460"
+  },
+  "Vortex.Server/Services/ChatAndAiServices.cs": {
+    "mtime": 1782688092.7500374,
+    "ast_hash": "75f039bba7b412ed18fdb08215dd3f50",
+    "semantic_hash": "75f039bba7b412ed18fdb08215dd3f50"
+  },
+  "Vortex.Server/Services/DesktopAuthService.cs": {
+    "mtime": 1782695090.3292236,
+    "ast_hash": "040035aa673a21314b9a2f805b613ce4",
+    "semantic_hash": "040035aa673a21314b9a2f805b613ce4"
+  },
+  "Vortex.Server/Vortex.Server.csproj": {
+    "mtime": 1782686673.449127,
+    "ast_hash": "cfb395da53b787f660aeeb4b808a97f9",
+    "semantic_hash": "cfb395da53b787f660aeeb4b808a97f9"
+  },
+  "Vortex.Server/appsettings.Development.json": {
+    "mtime": 1782686573.7843664,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "Vortex.Server/appsettings.json": {
+    "mtime": 1782686573.7843664,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "Vortex.Shared/Class1.cs": {
+    "mtime": 1782686571.496579,
+    "ast_hash": "b336fa09d6346ea4c425a0d912242ad2",
+    "semantic_hash": "b336fa09d6346ea4c425a0d912242ad2"
+  },
+  "Vortex.Shared/Contracts.cs": {
+    "mtime": 1782913617.9782436,
+    "ast_hash": "2b7a9cc09f2985a8638190700b9c3aa6",
+    "semantic_hash": ""
+  },
+  "Vortex.Shared/Vortex.Shared.csproj": {
+    "mtime": 1782686571.5011044,
+    "ast_hash": "a09b26111c660da58a84b7d66e16c694",
+    "semantic_hash": "a09b26111c660da58a84b7d66e16c694"
+  },
+  "Vortex.Tests/DesktopAuthIntegrationTests.cs": {
+    "mtime": 1782695530.7625294,
+    "ast_hash": "3c8f9daec32a50ece400ad140cd515bb",
+    "semantic_hash": "3c8f9daec32a50ece400ad140cd515bb"
+  },
+  "Vortex.Tests/DesktopViewModelAuthTests.cs": {
+    "mtime": 1782695619.015555,
+    "ast_hash": "8d8adafd5c2dd5780b8435e44689c8e1",
+    "semantic_hash": "8d8adafd5c2dd5780b8435e44689c8e1"
+  },
+  "Vortex.Tests/HermesIsolationIntegrationTests.cs": {
+    "mtime": 1782914404.5979958,
+    "ast_hash": "ec3ee2736eb83305766531e31e7d1297",
+    "semantic_hash": ""
+  },
+  "Vortex.Tests/SharedContractTests.cs": {
+    "mtime": 1782688410.9403281,
+    "ast_hash": "96be5d09d3e7d723b758195f59a243e5",
+    "semantic_hash": "96be5d09d3e7d723b758195f59a243e5"
+  },
+  "Vortex.Tests/UnitTest1.cs": {
+    "mtime": 1782686577.1383219,
+    "ast_hash": "45cb83b53fc0129b642ddb27933b6b12",
+    "semantic_hash": "45cb83b53fc0129b642ddb27933b6b12"
+  },
+  "Vortex.Tests/Vortex.Tests.csproj": {
+    "mtime": 1782695586.6390712,
+    "ast_hash": "12815c235776ed8279c225ee86d37310",
+    "semantic_hash": "12815c235776ed8279c225ee86d37310"
+  },
+  "Vortex.Web/Pages/DesktopAuthorize.cshtml": {
+    "mtime": 1782695182.995139,
+    "ast_hash": "d7e72750a7d5287866b45cc99d55966f",
+    "semantic_hash": "d7e72750a7d5287866b45cc99d55966f"
+  },
+  "Vortex.Web/Pages/DesktopAuthorize.cshtml.cs": {
+    "mtime": 1782695152.6315079,
+    "ast_hash": "3b3827bc51e9ffe649983af70ed3b429",
+    "semantic_hash": "3b3827bc51e9ffe649983af70ed3b429"
+  },
+  "Vortex.Web/Pages/DesktopSuccess.cshtml": {
+    "mtime": 1782692965.3310235,
+    "ast_hash": "d24ed0abe82d07e1a6e6a393336762e0",
+    "semantic_hash": "d24ed0abe82d07e1a6e6a393336762e0"
+  },
+  "Vortex.Web/Pages/DesktopSuccess.cshtml.cs": {
+    "mtime": 1782692973.0667725,
+    "ast_hash": "d4c1b9ca94007162236c46e66cff927c",
+    "semantic_hash": "d4c1b9ca94007162236c46e66cff927c"
+  },
+  "Vortex.Web/Pages/Error.cshtml": {
+    "mtime": 1782692781.6870277,
+    "ast_hash": "34b4b090be52ec4885be6fa2afff5c8d",
+    "semantic_hash": "34b4b090be52ec4885be6fa2afff5c8d"
+  },
+  "Vortex.Web/Pages/Error.cshtml.cs": {
+    "mtime": 1782692781.6900501,
+    "ast_hash": "51471da73d0326e6e95eb5f218d90bee",
+    "semantic_hash": "51471da73d0326e6e95eb5f218d90bee"
+  },
+  "Vortex.Web/Pages/Index.cshtml": {
+    "mtime": 1782692781.6905658,
+    "ast_hash": "818dc46c594ee83d1c54f2a28f1af859",
+    "semantic_hash": "818dc46c594ee83d1c54f2a28f1af859"
+  },
+  "Vortex.Web/Pages/Index.cshtml.cs": {
+    "mtime": 1782692781.6928005,
+    "ast_hash": "b09ac5355865ea1085958697763850fc",
+    "semantic_hash": "b09ac5355865ea1085958697763850fc"
+  },
+  "Vortex.Web/Pages/Login.cshtml": {
+    "mtime": 1782692893.687708,
+    "ast_hash": "d68956842ce1eb472f6a4b4acbec097c",
+    "semantic_hash": "d68956842ce1eb472f6a4b4acbec097c"
+  },
+  "Vortex.Web/Pages/Login.cshtml.cs": {
+    "mtime": 1782692912.8309808,
+    "ast_hash": "18a2289296e20cfd0235c5b1b0587f82",
+    "semantic_hash": "18a2289296e20cfd0235c5b1b0587f82"
+  },
+  "Vortex.Web/Pages/Logout.cshtml": {
+    "mtime": 1782692983.0303833,
+    "ast_hash": "cf71f3bde7fd73df90eb657ba2092e92",
+    "semantic_hash": "cf71f3bde7fd73df90eb657ba2092e92"
+  },
+  "Vortex.Web/Pages/Logout.cshtml.cs": {
+    "mtime": 1782692991.2463799,
+    "ast_hash": "ac1c74365b721fb0a60471a9ba4d481d",
+    "semantic_hash": "ac1c74365b721fb0a60471a9ba4d481d"
+  },
+  "Vortex.Web/Pages/Privacy.cshtml": {
+    "mtime": 1782692781.6928005,
+    "ast_hash": "b4b61a68aa14d5cd3534d6923ed304d5",
+    "semantic_hash": "b4b61a68aa14d5cd3534d6923ed304d5"
+  },
+  "Vortex.Web/Pages/Privacy.cshtml.cs": {
+    "mtime": 1782692781.6928005,
+    "ast_hash": "3ff3cfbd459f959d089f0e063a1025ce",
+    "semantic_hash": "3ff3cfbd459f959d089f0e063a1025ce"
+  },
+  "Vortex.Web/Pages/Register.cshtml": {
+    "mtime": 1782692850.2185934,
+    "ast_hash": "b65d3b0e710eb22ac6b5fc3b15797a3a",
+    "semantic_hash": "b65d3b0e710eb22ac6b5fc3b15797a3a"
+  },
+  "Vortex.Web/Pages/Register.cshtml.cs": {
+    "mtime": 1782692872.1056416,
+    "ast_hash": "c62e6532052deae7f333f339b15eb209",
+    "semantic_hash": "c62e6532052deae7f333f339b15eb209"
+  },
+  "Vortex.Web/Pages/Shared/_Layout.cshtml": {
+    "mtime": 1782692781.7129927,
+    "ast_hash": "b405ed2bd8f21e1fa4365d8b852c997c",
+    "semantic_hash": "b405ed2bd8f21e1fa4365d8b852c997c"
+  },
+  "Vortex.Web/Pages/Shared/_ValidationScriptsPartial.cshtml": {
+    "mtime": 1782692781.721557,
+    "ast_hash": "04c9739bd41a158c3fb95b9ec3020c94",
+    "semantic_hash": "04c9739bd41a158c3fb95b9ec3020c94"
+  },
+  "Vortex.Web/Pages/WebAuth.cs": {
+    "mtime": 1782692823.7573984,
+    "ast_hash": "d56f56b94247869958fac375188aae4e",
+    "semantic_hash": "d56f56b94247869958fac375188aae4e"
+  },
+  "Vortex.Web/Pages/_ViewImports.cshtml": {
+    "mtime": 1782692781.6943107,
+    "ast_hash": "23d4b6f20baabb172cd8c4f3bb1412ee",
+    "semantic_hash": "23d4b6f20baabb172cd8c4f3bb1412ee"
+  },
+  "Vortex.Web/Pages/_ViewStart.cshtml": {
+    "mtime": 1782692781.6943107,
+    "ast_hash": "e4cd881cf745e1e88cf2c5f6eceae943",
+    "semantic_hash": "e4cd881cf745e1e88cf2c5f6eceae943"
+  },
+  "Vortex.Web/Program.cs": {
+    "mtime": 1782692807.413687,
+    "ast_hash": "099e495fe39f939f4c89b1283786bb7c",
+    "semantic_hash": "099e495fe39f939f4c89b1283786bb7c"
+  },
+  "Vortex.Web/Properties/launchSettings.json": {
+    "mtime": 1782692781.7109687,
+    "ast_hash": "cba3bd6c4d6ab950d12da88c880f75dc",
+    "semantic_hash": "cba3bd6c4d6ab950d12da88c880f75dc"
+  },
+  "Vortex.Web/Vortex.Web.csproj": {
+    "mtime": 1782692782.972212,
+    "ast_hash": "9cfbfad00e42a5fb81262a839a69b4a7",
+    "semantic_hash": "9cfbfad00e42a5fb81262a839a69b4a7"
+  },
+  "Vortex.Web/appsettings.Development.json": {
+    "mtime": 1782692781.641736,
+    "ast_hash": "20b1e3cadcca09702635c78d877a5d5b",
+    "semantic_hash": "20b1e3cadcca09702635c78d877a5d5b"
+  },
+  "Vortex.Web/appsettings.json": {
+    "mtime": 1782692781.6462646,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "Vortex.Web/wwwroot/js/site.js": {
+    "mtime": 1782692781.722097,
+    "ast_hash": "53e309eeca51b3b6de20c4d24e1b2b63",
+    "semantic_hash": "53e309eeca51b3b6de20c4d24e1b2b63"
+  },
+  "Vortex.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js": {
+    "mtime": 1782692781.7144976,
+    "ast_hash": "2a905437ecdd58e97aad5ee4d30d3687",
+    "semantic_hash": "2a905437ecdd58e97aad5ee4d30d3687"
+  },
+  "Vortex.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js": {
+    "mtime": 1782692781.7155,
+    "ast_hash": "00e5caa5c85cb0efa90509048231708d",
+    "semantic_hash": "00e5caa5c85cb0efa90509048231708d"
+  },
+  "VortexAI.sln": {
+    "mtime": 1782914266.2438715,
+    "ast_hash": "32f952e7c254350ed3279349a504f9c1",
+    "semantic_hash": ""
+  },
+  "VortexAIIskeletGTHUB/Vortex.Admin/Program.cs": {
+    "mtime": 1782688222.6640155,
+    "ast_hash": "1f7d5e3b5fca020f505f9288c2c5201f",
+    "semantic_hash": "1f7d5e3b5fca020f505f9288c2c5201f"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Admin/Properties/launchSettings.json": {
+    "mtime": 1782686574.6460774,
+    "ast_hash": "75aa8bc229221180f90591c52b57b4ff",
+    "semantic_hash": "75aa8bc229221180f90591c52b57b4ff"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Admin/Vortex.Admin.csproj": {
+    "mtime": 1782686592.1592615,
+    "ast_hash": "9cfbfad00e42a5fb81262a839a69b4a7",
+    "semantic_hash": "9cfbfad00e42a5fb81262a839a69b4a7"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Admin/appsettings.Development.json": {
+    "mtime": 1782686574.6309803,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Admin/appsettings.json": {
+    "mtime": 1782686574.6309803,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/App.axaml.cs": {
+    "mtime": 1782693170.1442368,
+    "ast_hash": "76d50a4ddad487adc2fab9572051e155",
+    "semantic_hash": "76d50a4ddad487adc2fab9572051e155"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/MainWindow.axaml.cs": {
+    "mtime": 1782688318.6182883,
+    "ast_hash": "521c15fbdcad586752998c2b5491ed53",
+    "semantic_hash": "521c15fbdcad586752998c2b5491ed53"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/Program.cs": {
+    "mtime": 1782688246.4886038,
+    "ast_hash": "e2990ffa7d8a283e70f54d2882f0913c",
+    "semantic_hash": "e2990ffa7d8a283e70f54d2882f0913c"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/Services/BackendClient.cs": {
+    "mtime": 1782695233.1822603,
+    "ast_hash": "2e2e05c7499196574277bae48efa4741",
+    "semantic_hash": "2e2e05c7499196574277bae48efa4741"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/Services/DesktopAuthenticationService.cs": {
+    "mtime": 1782695565.6244414,
+    "ast_hash": "c66619b29d595986f1cd62b0ebbaff3b",
+    "semantic_hash": "c66619b29d595986f1cd62b0ebbaff3b"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/Services/DesktopLogService.cs": {
+    "mtime": 1782695014.472695,
+    "ast_hash": "c181c1ddfa2c0032b7dafab7ca96c289",
+    "semantic_hash": "c181c1ddfa2c0032b7dafab7ca96c289"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/Services/TokenStorageService.cs": {
+    "mtime": 1782693057.410785,
+    "ast_hash": "8833925691415af79b0144c9684d7031",
+    "semantic_hash": "8833925691415af79b0144c9684d7031"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/ViewModels/MainWindowViewModel.cs": {
+    "mtime": 1782696938.6616647,
+    "ast_hash": "717ecd3f94ea3cc12a6e6378eb76c588",
+    "semantic_hash": "717ecd3f94ea3cc12a6e6378eb76c588"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Desktop/Vortex.Desktop.csproj": {
+    "mtime": 1782688236.9261284,
+    "ast_hash": "42455ef6ffa76231679274c3a1ec68b5",
+    "semantic_hash": "42455ef6ffa76231679274c3a1ec68b5"
+  },
+  "VortexAIIskeletGTHUB/Vortex.LocalAgent/Program.cs": {
+    "mtime": 1782688192.5351622,
+    "ast_hash": "ce3fdfd1c8e2af745fc0670db3468566",
+    "semantic_hash": "ce3fdfd1c8e2af745fc0670db3468566"
+  },
+  "VortexAIIskeletGTHUB/Vortex.LocalAgent/Properties/launchSettings.json": {
+    "mtime": 1782686575.352934,
+    "ast_hash": "8c24d7c1ea8994d3915724715d28f0ee",
+    "semantic_hash": "8c24d7c1ea8994d3915724715d28f0ee"
+  },
+  "VortexAIIskeletGTHUB/Vortex.LocalAgent/Vortex.LocalAgent.csproj": {
+    "mtime": 1782686592.5308306,
+    "ast_hash": "9cfbfad00e42a5fb81262a839a69b4a7",
+    "semantic_hash": "9cfbfad00e42a5fb81262a839a69b4a7"
+  },
+  "VortexAIIskeletGTHUB/Vortex.LocalAgent/appsettings.Development.json": {
+    "mtime": 1782686575.3380895,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "VortexAIIskeletGTHUB/Vortex.LocalAgent/appsettings.json": {
+    "mtime": 1782686575.3398397,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Data/Migrations/001_initial.sql": {
+    "mtime": 1782688503.9152231,
+    "ast_hash": "0f600ec01c69039e38423ea7a3d73e80",
+    "semantic_hash": "0f600ec01c69039e38423ea7a3d73e80"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Data/Migrations/002_hermes_agent_isolation.sql": {
+    "mtime": 1782691155.3734403,
+    "ast_hash": "55e97ac2088169341901fe06d19ae7f6",
+    "semantic_hash": "55e97ac2088169341901fe06d19ae7f6"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Data/Migrations/003_desktop_auth_sessions.sql": {
+    "mtime": 1782692520.0649767,
+    "ast_hash": "bf42b77e62dabb9886d3bfa5dcaf3f3f",
+    "semantic_hash": "bf42b77e62dabb9886d3bfa5dcaf3f3f"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Data/VortexDb.cs": {
+    "mtime": 1782692510.6760323,
+    "ast_hash": "253884e1d7a0ea44dff1984425b89cbe",
+    "semantic_hash": "253884e1d7a0ea44dff1984425b89cbe"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Program.cs": {
+    "mtime": 1782695547.0914261,
+    "ast_hash": "1be52645134489b37089464fcb9cb287",
+    "semantic_hash": "1be52645134489b37089464fcb9cb287"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Properties/launchSettings.json": {
+    "mtime": 1782686573.799005,
+    "ast_hash": "560eb5ec339c253bcec190e16fe6336b",
+    "semantic_hash": "560eb5ec339c253bcec190e16fe6336b"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Services/AgentServices.cs": {
+    "mtime": 1782690954.1445305,
+    "ast_hash": "8d69c531eebe4f295cc51e05cf121f39",
+    "semantic_hash": "8d69c531eebe4f295cc51e05cf121f39"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Services/AuthServices.cs": {
+    "mtime": 1782692597.6433449,
+    "ast_hash": "2796b98be2642c5b62c8ee151339b460",
+    "semantic_hash": "2796b98be2642c5b62c8ee151339b460"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Services/ChatAndAiServices.cs": {
+    "mtime": 1782688092.7500374,
+    "ast_hash": "75f039bba7b412ed18fdb08215dd3f50",
+    "semantic_hash": "75f039bba7b412ed18fdb08215dd3f50"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Services/DesktopAuthService.cs": {
+    "mtime": 1782695090.3292236,
+    "ast_hash": "040035aa673a21314b9a2f805b613ce4",
+    "semantic_hash": "040035aa673a21314b9a2f805b613ce4"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/Vortex.Server.csproj": {
+    "mtime": 1782686673.449127,
+    "ast_hash": "cfb395da53b787f660aeeb4b808a97f9",
+    "semantic_hash": "cfb395da53b787f660aeeb4b808a97f9"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/appsettings.Development.json": {
+    "mtime": 1782686573.7843664,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Server/appsettings.json": {
+    "mtime": 1782686573.7843664,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Shared/Class1.cs": {
+    "mtime": 1782686571.496579,
+    "ast_hash": "b336fa09d6346ea4c425a0d912242ad2",
+    "semantic_hash": "b336fa09d6346ea4c425a0d912242ad2"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Shared/Contracts.cs": {
+    "mtime": 1782695024.9916105,
+    "ast_hash": "2e7c621de556dbdc81ee7902b2bc1222",
+    "semantic_hash": "2e7c621de556dbdc81ee7902b2bc1222"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Shared/Vortex.Shared.csproj": {
+    "mtime": 1782686571.5011044,
+    "ast_hash": "a09b26111c660da58a84b7d66e16c694",
+    "semantic_hash": "a09b26111c660da58a84b7d66e16c694"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Tests/DesktopAuthIntegrationTests.cs": {
+    "mtime": 1782695530.7625294,
+    "ast_hash": "3c8f9daec32a50ece400ad140cd515bb",
+    "semantic_hash": "3c8f9daec32a50ece400ad140cd515bb"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Tests/DesktopViewModelAuthTests.cs": {
+    "mtime": 1782695619.015555,
+    "ast_hash": "8d8adafd5c2dd5780b8435e44689c8e1",
+    "semantic_hash": "8d8adafd5c2dd5780b8435e44689c8e1"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Tests/HermesIsolationIntegrationTests.cs": {
+    "mtime": 1782691337.0489273,
+    "ast_hash": "d6626a9f9148e36c62ed241896c764ab",
+    "semantic_hash": "d6626a9f9148e36c62ed241896c764ab"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Tests/SharedContractTests.cs": {
+    "mtime": 1782688410.9403281,
+    "ast_hash": "96be5d09d3e7d723b758195f59a243e5",
+    "semantic_hash": "96be5d09d3e7d723b758195f59a243e5"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Tests/UnitTest1.cs": {
+    "mtime": 1782686577.1383219,
+    "ast_hash": "45cb83b53fc0129b642ddb27933b6b12",
+    "semantic_hash": "45cb83b53fc0129b642ddb27933b6b12"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Tests/Vortex.Tests.csproj": {
+    "mtime": 1782695586.6390712,
+    "ast_hash": "12815c235776ed8279c225ee86d37310",
+    "semantic_hash": "12815c235776ed8279c225ee86d37310"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/DesktopAuthorize.cshtml": {
+    "mtime": 1782695182.995139,
+    "ast_hash": "d7e72750a7d5287866b45cc99d55966f",
+    "semantic_hash": "d7e72750a7d5287866b45cc99d55966f"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/DesktopAuthorize.cshtml.cs": {
+    "mtime": 1782695152.6315079,
+    "ast_hash": "3b3827bc51e9ffe649983af70ed3b429",
+    "semantic_hash": "3b3827bc51e9ffe649983af70ed3b429"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/DesktopSuccess.cshtml": {
+    "mtime": 1782692965.3310235,
+    "ast_hash": "d24ed0abe82d07e1a6e6a393336762e0",
+    "semantic_hash": "d24ed0abe82d07e1a6e6a393336762e0"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/DesktopSuccess.cshtml.cs": {
+    "mtime": 1782692973.0667725,
+    "ast_hash": "d4c1b9ca94007162236c46e66cff927c",
+    "semantic_hash": "d4c1b9ca94007162236c46e66cff927c"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Error.cshtml": {
+    "mtime": 1782692781.6870277,
+    "ast_hash": "34b4b090be52ec4885be6fa2afff5c8d",
+    "semantic_hash": "34b4b090be52ec4885be6fa2afff5c8d"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Error.cshtml.cs": {
+    "mtime": 1782692781.6900501,
+    "ast_hash": "51471da73d0326e6e95eb5f218d90bee",
+    "semantic_hash": "51471da73d0326e6e95eb5f218d90bee"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Index.cshtml": {
+    "mtime": 1782692781.6905658,
+    "ast_hash": "818dc46c594ee83d1c54f2a28f1af859",
+    "semantic_hash": "818dc46c594ee83d1c54f2a28f1af859"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Index.cshtml.cs": {
+    "mtime": 1782692781.6928005,
+    "ast_hash": "b09ac5355865ea1085958697763850fc",
+    "semantic_hash": "b09ac5355865ea1085958697763850fc"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Login.cshtml": {
+    "mtime": 1782692893.687708,
+    "ast_hash": "d68956842ce1eb472f6a4b4acbec097c",
+    "semantic_hash": "d68956842ce1eb472f6a4b4acbec097c"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Login.cshtml.cs": {
+    "mtime": 1782692912.8309808,
+    "ast_hash": "18a2289296e20cfd0235c5b1b0587f82",
+    "semantic_hash": "18a2289296e20cfd0235c5b1b0587f82"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Logout.cshtml": {
+    "mtime": 1782692983.0303833,
+    "ast_hash": "cf71f3bde7fd73df90eb657ba2092e92",
+    "semantic_hash": "cf71f3bde7fd73df90eb657ba2092e92"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Logout.cshtml.cs": {
+    "mtime": 1782692991.2463799,
+    "ast_hash": "ac1c74365b721fb0a60471a9ba4d481d",
+    "semantic_hash": "ac1c74365b721fb0a60471a9ba4d481d"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Privacy.cshtml": {
+    "mtime": 1782692781.6928005,
+    "ast_hash": "b4b61a68aa14d5cd3534d6923ed304d5",
+    "semantic_hash": "b4b61a68aa14d5cd3534d6923ed304d5"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Privacy.cshtml.cs": {
+    "mtime": 1782692781.6928005,
+    "ast_hash": "3ff3cfbd459f959d089f0e063a1025ce",
+    "semantic_hash": "3ff3cfbd459f959d089f0e063a1025ce"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Register.cshtml": {
+    "mtime": 1782692850.2185934,
+    "ast_hash": "b65d3b0e710eb22ac6b5fc3b15797a3a",
+    "semantic_hash": "b65d3b0e710eb22ac6b5fc3b15797a3a"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Register.cshtml.cs": {
+    "mtime": 1782692872.1056416,
+    "ast_hash": "c62e6532052deae7f333f339b15eb209",
+    "semantic_hash": "c62e6532052deae7f333f339b15eb209"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Shared/_Layout.cshtml": {
+    "mtime": 1782692781.7129927,
+    "ast_hash": "b405ed2bd8f21e1fa4365d8b852c997c",
+    "semantic_hash": "b405ed2bd8f21e1fa4365d8b852c997c"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/Shared/_ValidationScriptsPartial.cshtml": {
+    "mtime": 1782692781.721557,
+    "ast_hash": "04c9739bd41a158c3fb95b9ec3020c94",
+    "semantic_hash": "04c9739bd41a158c3fb95b9ec3020c94"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/WebAuth.cs": {
+    "mtime": 1782692823.7573984,
+    "ast_hash": "d56f56b94247869958fac375188aae4e",
+    "semantic_hash": "d56f56b94247869958fac375188aae4e"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/_ViewImports.cshtml": {
+    "mtime": 1782692781.6943107,
+    "ast_hash": "23d4b6f20baabb172cd8c4f3bb1412ee",
+    "semantic_hash": "23d4b6f20baabb172cd8c4f3bb1412ee"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Pages/_ViewStart.cshtml": {
+    "mtime": 1782692781.6943107,
+    "ast_hash": "e4cd881cf745e1e88cf2c5f6eceae943",
+    "semantic_hash": "e4cd881cf745e1e88cf2c5f6eceae943"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Program.cs": {
+    "mtime": 1782692807.413687,
+    "ast_hash": "099e495fe39f939f4c89b1283786bb7c",
+    "semantic_hash": "099e495fe39f939f4c89b1283786bb7c"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Properties/launchSettings.json": {
+    "mtime": 1782692781.7109687,
+    "ast_hash": "cba3bd6c4d6ab950d12da88c880f75dc",
+    "semantic_hash": "cba3bd6c4d6ab950d12da88c880f75dc"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/Vortex.Web.csproj": {
+    "mtime": 1782692782.972212,
+    "ast_hash": "9cfbfad00e42a5fb81262a839a69b4a7",
+    "semantic_hash": "9cfbfad00e42a5fb81262a839a69b4a7"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/appsettings.Development.json": {
+    "mtime": 1782692781.641736,
+    "ast_hash": "20b1e3cadcca09702635c78d877a5d5b",
+    "semantic_hash": "20b1e3cadcca09702635c78d877a5d5b"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/appsettings.json": {
+    "mtime": 1782692781.6462646,
+    "ast_hash": "f7e65dde4e5533740a0d57ac9355c0e8",
+    "semantic_hash": "f7e65dde4e5533740a0d57ac9355c0e8"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/wwwroot/js/site.js": {
+    "mtime": 1782692781.722097,
+    "ast_hash": "53e309eeca51b3b6de20c4d24e1b2b63",
+    "semantic_hash": "53e309eeca51b3b6de20c4d24e1b2b63"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js": {
+    "mtime": 1782692781.7144976,
+    "ast_hash": "2a905437ecdd58e97aad5ee4d30d3687",
+    "semantic_hash": "2a905437ecdd58e97aad5ee4d30d3687"
+  },
+  "VortexAIIskeletGTHUB/Vortex.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js": {
+    "mtime": 1782692781.7155,
+    "ast_hash": "00e5caa5c85cb0efa90509048231708d",
+    "semantic_hash": "00e5caa5c85cb0efa90509048231708d"
+  },
+  "VortexAIIskeletGTHUB/VortexAI.sln": {
+    "mtime": 1782692782.5600355,
+    "ast_hash": "179350e3a54ebad1627755e31f54a369",
+    "semantic_hash": "179350e3a54ebad1627755e31f54a369"
+  },
+  "VortexAIIskeletGTHUB/scripts/build-linux.sh": {
+    "mtime": 1782688429.972249,
+    "ast_hash": "8792cd19a021e062abe72ab27a1a4f8b",
+    "semantic_hash": "8792cd19a021e062abe72ab27a1a4f8b"
+  },
+  "VortexAIIskeletGTHUB/scripts/package-deb.sh": {
+    "mtime": 1782688443.5349827,
+    "ast_hash": "0563ad50809f01bbf14f773c20589380",
+    "semantic_hash": "0563ad50809f01bbf14f773c20589380"
+  },
+  "VortexAIIskeletGTHUB/scripts/start-dev.ps1": {
+    "mtime": 1782694407.3041015,
+    "ast_hash": "8135759639b91b7ec84bbf84f1597fcf",
+    "semantic_hash": "8135759639b91b7ec84bbf84f1597fcf"
+  },
+  "VortexAIIskeletGTHUB/scripts/stop-dev.ps1": {
+    "mtime": 1782693485.159961,
+    "ast_hash": "8b29407e31fabea0dbe5387234095326",
+    "semantic_hash": "8b29407e31fabea0dbe5387234095326"
+  },
+  "scripts/build-linux.sh": {
+    "mtime": 1782688429.972249,
+    "ast_hash": "8792cd19a021e062abe72ab27a1a4f8b",
+    "semantic_hash": "8792cd19a021e062abe72ab27a1a4f8b"
+  },
+  "scripts/package-deb.sh": {
+    "mtime": 1782688443.5349827,
+    "ast_hash": "0563ad50809f01bbf14f773c20589380",
+    "semantic_hash": "0563ad50809f01bbf14f773c20589380"
+  },
+  "scripts/start-dev.ps1": {
+    "mtime": 1782694407.3041015,
+    "ast_hash": "8135759639b91b7ec84bbf84f1597fcf",
+    "semantic_hash": "8135759639b91b7ec84bbf84f1597fcf"
+  },
+  "scripts/stop-dev.ps1": {
+    "mtime": 1782693485.159961,
+    "ast_hash": "8b29407e31fabea0dbe5387234095326",
+    "semantic_hash": "8b29407e31fabea0dbe5387234095326"
+  },
+  "Vortex.HermesWorker/Program.cs": {
+    "mtime": 1782914254.3059018,
+    "ast_hash": "c8c0db6d6c4f85c262daab273c6352dc",
+    "semantic_hash": ""
+  },
+  "Vortex.HermesWorker/Vortex.HermesWorker.csproj": {
+    "mtime": 1782914168.7991238,
+    "ast_hash": "d52f68195b5bef3647ebe3f0207f60b5",
+    "semantic_hash": ""
+  },
+  "Vortex.Server/Services/AgentJobServices.cs": {
+    "mtime": 1782914936.1243608,
+    "ast_hash": "90be5733c7ed408810f1ba3ce8f90114",
+    "semantic_hash": ""
+  }
+}

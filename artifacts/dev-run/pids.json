@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Name":  "server",
+        "Id":  30872,
+        "Log":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\server.log",
+        "ErrorLog":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\server.err.log"
+    },
+    {
+        "Name":  "web",
+        "Id":  33120,
+        "Log":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\web.log",
+        "ErrorLog":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\web.err.log"
+    },
+    {
+        "Name":  "local-agent",
+        "Id":  24192,
+        "Log":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\local-agent.log",
+        "ErrorLog":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\local-agent.err.log"
+    },
+    {
+        "Name":  "desktop",
+        "Id":  30032,
+        "Log":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\desktop.log",
+        "ErrorLog":  "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\artifacts\\dev-run\\desktop.err.log"
+    }
+]

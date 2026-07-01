@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0C91B3-EFE6-473A-8368-277CE7AE53A3}|Vortex.Tests\\Vortex.Tests.csproj|c:\\users\\user\\desktop\\avlone u\u0131 \u00E7al\u0131\u015Fmas\u0131 rider\\vortex.tests\\vortex.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3A0C91B3-EFE6-473A-8368-277CE7AE53A3}|Vortex.Tests\\Vortex.Tests.csproj|solutionrelative:vortex.tests\\vortex.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61C5F55D-E6B9-48E7-9788-7141D648F1C4}|Vortex.Server\\Vortex.Server.csproj|c:\\users\\user\\desktop\\avlone u\u0131 \u00E7al\u0131\u015Fmas\u0131 rider\\vortex.server\\vortex.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{61C5F55D-E6B9-48E7-9788-7141D648F1C4}|Vortex.Server\\Vortex.Server.csproj|solutionrelative:vortex.server\\vortex.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5FAB211-1A4A-40BB-AEE5-759FED6D7C21}|Vortex.LocalAgent\\Vortex.LocalAgent.csproj|c:\\users\\user\\desktop\\avlone u\u0131 \u00E7al\u0131\u015Fmas\u0131 rider\\vortex.localagent\\vortex.localagent.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E5FAB211-1A4A-40BB-AEE5-759FED6D7C21}|Vortex.LocalAgent\\Vortex.LocalAgent.csproj|solutionrelative:vortex.localagent\\vortex.localagent.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D6E7140-CB78-4FFC-9591-F5C6470D4325}|Vortex.Shared\\Vortex.Shared.csproj|c:\\users\\user\\desktop\\avlone u\u0131 \u00E7al\u0131\u015Fmas\u0131 rider\\vortex.shared\\vortex.shared.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0D6E7140-CB78-4FFC-9591-F5C6470D4325}|Vortex.Shared\\Vortex.Shared.csproj|solutionrelative:vortex.shared\\vortex.shared.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{73068c07-fba1-453f-99ae-6edf972119b2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Vortex.Tests",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.Tests\\Vortex.Tests.csproj",
+              "RelativeDocumentMoniker": "Vortex.Tests\\Vortex.Tests.csproj",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.Tests\\Vortex.Tests.csproj",
+              "RelativeToolTip": "Vortex.Tests\\Vortex.Tests.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-28T23:25:59.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Vortex.Shared",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.Shared\\Vortex.Shared.csproj",
+              "RelativeDocumentMoniker": "Vortex.Shared\\Vortex.Shared.csproj",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.Shared\\Vortex.Shared.csproj",
+              "RelativeToolTip": "Vortex.Shared\\Vortex.Shared.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-28T23:25:56.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Vortex.LocalAgent",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.LocalAgent\\Vortex.LocalAgent.csproj",
+              "RelativeDocumentMoniker": "Vortex.LocalAgent\\Vortex.LocalAgent.csproj",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.LocalAgent\\Vortex.LocalAgent.csproj",
+              "RelativeToolTip": "Vortex.LocalAgent\\Vortex.LocalAgent.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-28T23:25:55.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Vortex.Server",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.Server\\Vortex.Server.csproj",
+              "RelativeDocumentMoniker": "Vortex.Server\\Vortex.Server.csproj",
+              "ToolTip": "C:\\Users\\User\\Desktop\\Avlone U\u0131 \u00E7al\u0131\u015Fmas\u0131 Rider\\Vortex.Server\\Vortex.Server.csproj",
+              "RelativeToolTip": "Vortex.Server\\Vortex.Server.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-28T23:25:52.682Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
