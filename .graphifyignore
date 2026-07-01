@@ -1,0 +1,17 @@
+﻿.git/
+bin/
+obj/
+artifacts/
+.vs/
+.idea/
+TestResults/
+logs/
+*.log
+*.user
+*.suo
+
+# Semantic LLM gerektiren belge türleri
+*.md
+*.txt
+*.html
+*.pdf
