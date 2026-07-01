@@ -10,24 +10,28 @@ Tarih: 2026-07-01
 
 ## Bu aşamanın hedefi
 
-İlk dağıtım dilimi uygulandı: public `Vortex.Server` üzerinde kalıcı AgentJob kuyruğu ve laptop üzerinde çalışacak `Vortex.HermesWorker` pull modeli hazırlandı.
+Yeni özellik eklemeden mevcut Server–Worker ilk dilimindeki güvenlik ve eşzamanlılık sorunları düzeltildi.
 
 ## Tamamlananlar
 
-- `AgentJobs` kalıcı iş kuyruğu eklendi.
-- Worker claim/lease mekanizması eklendi.
-- Worker heartbeat ve `/health/worker` readiness endpoint'i eklendi.
-- Worker endpointleri için HMAC servis kimliği, timestamp ve nonce replay kontrolü eklendi.
-- User-HermesProfile-Workspace mapping'i opaque workspace id ile genişletildi.
-- Free plan storage quota seed/migration değeri 5 GB'a yükseltildi.
-- `/api/agent/chat` artık public server'da Hermes çalıştırmaz; işi kuyruğa yazar ve worker sonucu gelirse yalnızca ilgili kullanıcıya döner.
-- Worker çevrimdışıysa server sahte cevap üretmez; iş kuyrukta kalır ve client `202 Accepted` ile job status alır.
-- Worker console projesi eklendi: `Vortex.HermesWorker`.
-- Worker gerçek Hermes executable yapılandırılmamışsa başarı üretmez; readiness/hata döndürür.
-- Completion sırasında `AgentUsageCounters`, `AgentExecutionLogs` ve `AuditLogs` güncellenir.
-- Owner-only job status endpoint'i eklendi: `/api/agent/jobs/{id}`.
-- Bu dilime ait zorunlu belgeler eklendi/güncellendi.
-- `CODEMAP.md` oluşturuldu.
+- Worker HMAC canonical formatına request body SHA-256 hash eklendi.
+- Server ve Worker ortak `Vortex.Shared.SigningCanonical` helper'ını kullanır.
+- İmza karşılaştırması sabit zamanlı yapılmaya devam eder.
+- Worker replay nonce koruması SQLite `WorkerReplayNonces` tablosuna taşındı; `WorkerId + Nonce` tekrar kullanımı reddedilir.
+- AgentJob claim işlemi tek conditional `UPDATE ... RETURNING Id` mantığına taşındı.
+- Claim sırasında status, lease, cancellation ve attempt koşulları update içinde tekrar kontrol edilir.
+- Server not-ready worker'a iş vermez.
+- Worker not-ready ise claim isteği göndermez.
+- Completion yalnızca işi claim eden worker, aktif status ve geçerli lease ile kabul edilir.
+- Terminal job completion idempotent hâle getirildi; duplicate completion usage/audit'i ikinci kez artırmaz/yazmaz.
+- Completion status update, usage ve audit aynı transaction içinde yapılır.
+- Worker Hermes process execution `MaxRunSeconds` timeout kullanır.
+- Timeout/cancellation durumunda process tree sonlandırılır.
+- Worker stdout/stderr okumaları bounded hâle getirildi.
+- `Worker:MaxStdoutBytes` / `VORTEX_WORKER_MAX_STDOUT_BYTES` ve `Worker:MaxStderrBytes` / `VORTEX_WORKER_MAX_STDERR_BYTES` desteklenir.
+- NotConfigured readiness durumu gerçek heartbeat state olarak üretilebilir.
+- Güvenlik ve eşzamanlılık regression testleri eklendi.
+- İlgili belgeler ve `CODEMAP.md` güncellendi.
 - `graphify update .` çalıştırıldı.
 
 ## Henüz yapılmayanlar
@@ -36,22 +40,22 @@ Tarih: 2026-07-01
 - Gerçek Hermes binary/credential olmadığı için uçtan uca gerçek model yürütmesi manuel doğrulanmadı.
 - Google OAuth ve GitHub OAuth eklenmedi.
 - Sesli sohbet, TTS, maskot, ağız animasyonu veya gelişmiş UI eklenmedi.
-- Worker-side automation scheduler uygulanmadı; mevcut scheduled task endpoint'i metadata kaydı tutar, gerçek worker zamanlayıcı çalıştırması tamam değildir.
+- Worker-side automation scheduler uygulanmadı.
 - Büyük input/result için `InputReference`/`ResultReference` dış depolaması tamamlanmadı.
 - Tam storage quota pre/post write enforcement ve reconciliation görevi tamamlanmadı.
-- Symlink/junction kaçışlarına karşı kapsamlı filesystem testi eklenmedi.
+- Symlink/junction kaçışlarına karşı kapsamlı filesystem hardening hâlâ yok.
 - Production forwarded headers, global rate limit, refresh token rotasyonu ve backup encryption henüz tamam değil.
 
 ## Çalışan servisler / bileşenler
 
 - `Vortex.Server`: build ve test ortamında çalışıyor.
-- `Vortex.HermesWorker`: derleniyor; gerçek Hermes executable bekliyor.
+- `Vortex.HermesWorker`: derleniyor; process timeout/output limitleri test helper process ile doğrulandı.
 - Server-worker API sözleşmesi: integration test ile simüle worker üzerinden doğrulandı.
-- Job queue: claim, heartbeat, complete ve owner-only status test edildi.
+- Job queue: atomik claim, heartbeat, guarded completion, owner-only status, duplicate completion ve expired lease davranışı test edildi.
 
 ## Sahte veya doğrulanmamış kalan parçalar
 
-- Gerçek Hermes runtime çağrısı kodda process adapter olarak mevcut, ancak `HERMES_EXECUTABLE_PATH` sağlanmadığı için gerçek çalıştırma doğrulanmadı.
+- Gerçek Hermes runtime çağrısı kodda process adapter olarak mevcut, ancak gerçek `HERMES_EXECUTABLE_PATH` ile canlı Hermes model yürütmesi doğrulanmadı.
 - Testlerde worker HTTP davranışı simüle edildi; gerçek Tailscale ağı üzerinde canlı server-worker bağlantısı doğrulanmadı.
 - Mevcut in-memory Hermes gateway yalnızca eski test/metadata uyumluluğu için config ile açılabilir; production default bu gateway'i kullanmaz.
 
@@ -74,15 +78,17 @@ VORTEX_WORKER_ID
 VORTEX_WORKER_TOKEN
 VORTEX_WORKER_DATA
 HERMES_EXECUTABLE_PATH
+VORTEX_WORKER_MAX_STDOUT_BYTES
+VORTEX_WORKER_MAX_STDERR_BYTES
 ```
 
 ## Migration durumu
 
-`VortexDb.InitializeAsync` içinde lightweight SQLite migration eklendi:
+`VortexDb.InitializeAsync` içinde lightweight SQLite migration/schema bootstrap geçerlidir:
 
 - `UserAgentProfiles` için `WorkerId`, `WorkspaceId`, `PlanId`, `StorageQuotaBytes`, `StorageUsedBytes`, `ProfileStatus`, `DisabledAt`, `LastUsedAt` kolonları garanti edilir.
 - Free plan kotası eski düşük değerlerden 5 GB'a yükseltilir.
-- `WorkerRegistrations`, `AgentJobs` ve AgentJobs indexleri oluşturulur.
+- `WorkerRegistrations`, `WorkerReplayNonces`, `AgentJobs` ve ilgili indexler oluşturulur.
 
 Ayrı EF migration sistemi yoktur; mevcut proje SQLite schema bootstrap yaklaşımını kullanır.
 
@@ -100,18 +106,18 @@ Sonuç:
 
 ```text
 Build: başarılı, 0 uyarı, 0 hata
-Test: başarılı, 9/9 test geçti
-Graphify: AST update başarılı, 1226 nodes / 2141 edges / 91 communities
+Test: başarılı, 14/14 test geçti
+Graphify: AST update başarılı, 1247 nodes / 2221 edges / 97 communities
 ```
 
 ## Bilinen güvenlik riskleri
 
-- Worker HMAC nonce bellekte tutulur; server restart sonrası replay penceresi kalıcı değildir.
 - `AgentJobs.Result` şu dilimde SQLite içinde plaintext saklanır.
 - Tailscale ACL politikası kodla uygulanmadı; operasyonel ortamda ayrıca kurulmalıdır.
-- Tam prompt ve hassas dosya içerikleri loglanmamalıdır; mevcut audit detayları id/uzunluk seviyesinde tutulur, ancak future logging değişiklikleri aynı kurala uymalıdır.
 - Worker workspace path doğrulaması temel traversal/root containment içerir; symlink/junction hardening eklenmelidir.
+- Storage quota hâlâ dosya yazma katmanında tam enforce edilmez.
+- Global HTTP rate limit ve encrypted backup tamam değildir.
 
 ## Sonraki kesin adım
 
-Gerçek laptop ortamında Tailscale private bağlantı, `Worker:AllowedWorkerId`/`Worker:ServiceToken`, `VORTEX_WORKER_TOKEN` ve `HERMES_EXECUTABLE_PATH` değerleriyle canlı `Vortex.HermesWorker` çalıştırılıp tek bir gerçek Hermes job'unun uçtan uca doğrulanması.
+Gerçek Hermes veya Tailscale entegrasyonuna geçmeden önce yalnızca workspace filesystem hardening ve storage quota write enforcement dilimini planlamak.

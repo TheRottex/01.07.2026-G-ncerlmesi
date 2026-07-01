@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Vortex.Shared;
 
@@ -108,6 +110,22 @@ public sealed record SpeechToTextRequest(string AudioBase64, string ContentType,
 public sealed record SpeechToTextResponse(string Text, decimal Confidence);
 public sealed record TextToSpeechRequest(string Text, string? Voice, string? Language);
 public sealed record TextToSpeechResponse(bool Succeeded, string Message);
+
+public static class SigningCanonical
+{
+    public static string Create(string method, string path, string timestamp, string nonce, string bodyHash)
+        => string.Join('\n', method.ToUpperInvariant(), path, timestamp, nonce, bodyHash);
+
+    public static string Hash(byte[] bytes) => TokenServiceCompatibleBase64Url(SHA256.HashData(bytes));
+
+    public static string Sign(string canonical, string secret)
+    {
+        using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secret));
+        return TokenServiceCompatibleBase64Url(hmac.ComputeHash(Encoding.UTF8.GetBytes(canonical)));
+    }
+
+    private static string TokenServiceCompatibleBase64Url(byte[] bytes) => Convert.ToBase64String(bytes).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+}
 
 public static class SecretMasker
 {

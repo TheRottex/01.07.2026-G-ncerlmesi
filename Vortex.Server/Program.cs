@@ -27,6 +27,11 @@ builder.Logging.AddConsole();
 
 var app = builder.Build();
 app.UseCors();
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.StartsWithSegments("/api/worker")) context.Request.EnableBuffering();
+    await next();
+});
 await app.Services.GetRequiredService<VortexDb>().InitializeAsync();
 
 app.MapGet("/health", () => Results.Ok(new { status = "healthy", service = "Vortex.Server", utc = DateTimeOffset.UtcNow }));
@@ -274,14 +279,14 @@ app.MapGet("/api/admin/usage", async (HttpContext context, VortexDb db, Cancella
 
 app.MapPost("/api/worker/heartbeat", async (HttpContext context, WorkerHeartbeatRequest request, IWorkerAuthenticationService auth, IAgentJobService jobs, CancellationToken ct) =>
 {
-    var workerId = auth.Authenticate(context);
+    var workerId = await auth.AuthenticateAsync(context, ct);
     if (workerId is null) return Results.Unauthorized();
     return Results.Ok(await jobs.HeartbeatAsync(workerId, request, ct));
 });
 
 app.MapPost("/api/worker/jobs/claim", async (HttpContext context, WorkerClaimRequest request, IWorkerAuthenticationService auth, IAgentJobService jobs, CancellationToken ct) =>
 {
-    var workerId = auth.Authenticate(context);
+    var workerId = await auth.AuthenticateAsync(context, ct);
     if (workerId is null) return Results.Unauthorized();
     var lease = await jobs.ClaimNextAsync(workerId, request, ct);
     return lease is null ? Results.NoContent() : Results.Ok(lease);
@@ -289,7 +294,7 @@ app.MapPost("/api/worker/jobs/claim", async (HttpContext context, WorkerClaimReq
 
 app.MapPost("/api/worker/jobs/{id:guid}/heartbeat", async (HttpContext context, Guid id, IWorkerAuthenticationService auth, IAgentJobService jobs, CancellationToken ct) =>
 {
-    var workerId = auth.Authenticate(context);
+    var workerId = await auth.AuthenticateAsync(context, ct);
     if (workerId is null) return Results.Unauthorized();
     await jobs.HeartbeatJobAsync(workerId, id, ct);
     return Results.NoContent();
@@ -297,7 +302,7 @@ app.MapPost("/api/worker/jobs/{id:guid}/heartbeat", async (HttpContext context, 
 
 app.MapPost("/api/worker/jobs/{id:guid}/complete", async (HttpContext context, Guid id, WorkerCompleteJobRequest request, IWorkerAuthenticationService auth, IAgentJobService jobs, CancellationToken ct) =>
 {
-    var workerId = auth.Authenticate(context);
+    var workerId = await auth.AuthenticateAsync(context, ct);
     if (workerId is null) return Results.Unauthorized();
     var job = await jobs.CompleteAsync(workerId, id, request, ct);
     return job is null ? Results.NotFound() : Results.Ok(job);

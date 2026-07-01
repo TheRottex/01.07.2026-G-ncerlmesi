@@ -7,61 +7,84 @@ using System.Text.Json;
 using Vortex.Shared;
 
 var config = WorkerConfig.FromEnvironment(args);
+using var stopping = new CancellationTokenSource();
+Console.CancelKeyPress += (_, e) => { e.Cancel = true; stopping.Cancel(); };
 using var http = new HttpClient { BaseAddress = new Uri(config.ServerBaseUrl.TrimEnd('/') + "/"), Timeout = TimeSpan.FromSeconds(90) };
 var runtime = new HermesRuntime(config);
 Console.WriteLine($"Vortex Hermes Worker started. WorkerId={config.WorkerId}; Server={config.ServerBaseUrl}");
 
-while (!CancellationToken.None.IsCancellationRequested)
+while (!stopping.IsCancellationRequested)
 {
     try
     {
         var readiness = runtime.GetReadiness();
-        await SendAsync(HttpMethod.Post, "api/worker/heartbeat", new WorkerHeartbeatRequest(readiness.HermesReady, readiness.ModelReady, readiness.StorageHealthy, readiness.Message), config, CancellationToken.None);
-        var claim = await SendAsync(HttpMethod.Post, "api/worker/jobs/claim", new WorkerClaimRequest(1, config.LeaseSeconds), config, CancellationToken.None);
+        await SendAsync(HttpMethod.Post, "api/worker/heartbeat", new WorkerHeartbeatRequest(readiness.HermesReady, readiness.ModelReady, readiness.StorageHealthy, readiness.Message), config, stopping.Token);
+        if (!readiness.IsReady)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(config.IdlePollSeconds), stopping.Token);
+            continue;
+        }
+
+        var claim = await SendAsync(HttpMethod.Post, "api/worker/jobs/claim", new WorkerClaimRequest(1, config.LeaseSeconds), config, stopping.Token);
         if (claim.StatusCode == HttpStatusCode.NoContent)
         {
-            await Task.Delay(TimeSpan.FromSeconds(config.IdlePollSeconds));
+            await Task.Delay(TimeSpan.FromSeconds(config.IdlePollSeconds), stopping.Token);
             continue;
         }
         claim.EnsureSuccessStatusCode();
-        var job = await claim.Content.ReadFromJsonAsync<WorkerJobLeaseDto>(WorkerJson.Options) ?? throw new InvalidOperationException("Server boş iş döndürdü.");
-        await SendAsync(HttpMethod.Post, $"api/worker/jobs/{job.JobId}/heartbeat", new { }, config, CancellationToken.None);
-        var result = await runtime.RunAsync(job, CancellationToken.None);
-        await SendAsync(HttpMethod.Post, $"api/worker/jobs/{job.JobId}/complete", result, config, CancellationToken.None);
+        var job = await claim.Content.ReadFromJsonAsync<WorkerJobLeaseDto>(WorkerJson.Options, stopping.Token) ?? throw new InvalidOperationException("Server boş iş döndürdü.");
+        await SendAsync(HttpMethod.Post, $"api/worker/jobs/{job.JobId}/heartbeat", new { }, config, stopping.Token);
+        using var jobHeartbeat = CancellationTokenSource.CreateLinkedTokenSource(stopping.Token);
+        var heartbeatTask = HeartbeatDuringRunAsync(job.JobId, config, jobHeartbeat.Token);
+        var result = await runtime.RunAsync(job, stopping.Token);
+        await jobHeartbeat.CancelAsync();
+        try { await heartbeatTask; } catch (OperationCanceledException) { }
+        await SendAsync(HttpMethod.Post, $"api/worker/jobs/{job.JobId}/complete", result, config, stopping.Token);
+    }
+    catch (OperationCanceledException) when (stopping.IsCancellationRequested)
+    {
+        break;
     }
     catch (Exception ex)
     {
         Console.Error.WriteLine($"Worker loop failed: {ex.GetType().Name}: {ex.Message}");
-        await Task.Delay(TimeSpan.FromSeconds(config.ErrorDelaySeconds));
+        await Task.Delay(TimeSpan.FromSeconds(config.ErrorDelaySeconds), stopping.Token);
+    }
+}
+
+async Task HeartbeatDuringRunAsync(Guid jobId, WorkerConfig config, CancellationToken cancellationToken)
+{
+    while (!cancellationToken.IsCancellationRequested)
+    {
+        await Task.Delay(TimeSpan.FromSeconds(Math.Max(5, config.LeaseSeconds / 3)), cancellationToken);
+        await SendAsync(HttpMethod.Post, $"api/worker/jobs/{jobId}/heartbeat", new { }, config, cancellationToken);
     }
 }
 
 async Task<HttpResponseMessage> SendAsync<T>(HttpMethod method, string path, T body, WorkerConfig config, CancellationToken cancellationToken)
 {
+    var bytes = JsonSerializer.SerializeToUtf8Bytes(body, WorkerJson.Options);
     using var request = new HttpRequestMessage(method, path);
-    request.Content = JsonContent.Create(body, options: WorkerJson.Options);
+    request.Content = new ByteArrayContent(bytes);
+    request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
     var timestamp = DateTimeOffset.UtcNow.ToString("O");
     var nonce = Guid.NewGuid().ToString("N");
     var target = "/" + path.TrimStart('/');
-    var canonical = string.Join('\n', method.Method.ToUpperInvariant(), target, timestamp, nonce);
+    var bodyHash = SigningCanonical.Hash(bytes);
+    var canonical = SigningCanonical.Create(method.Method, target, timestamp, nonce, bodyHash);
     request.Headers.Add("X-Vortex-Worker-Id", config.WorkerId);
     request.Headers.Add("X-Vortex-Timestamp", timestamp);
     request.Headers.Add("X-Vortex-Nonce", nonce);
-    request.Headers.Add("X-Vortex-Signature", Sign(canonical, config.ServiceToken));
+    request.Headers.Add("X-Vortex-Signature", SigningCanonical.Sign(canonical, config.ServiceToken));
     return await http.SendAsync(request, cancellationToken);
 }
 
-static string Sign(string canonical, string secret)
+public sealed record WorkerReadiness(bool HermesReady, bool ModelReady, bool StorageHealthy, string? Message)
 {
-    using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secret));
-    return Base64Url(hmac.ComputeHash(Encoding.UTF8.GetBytes(canonical)));
+    public bool IsReady => HermesReady && ModelReady && StorageHealthy;
 }
 
-static string Base64Url(byte[] bytes) => Convert.ToBase64String(bytes).TrimEnd('=').Replace('+', '-').Replace('/', '_');
-
-internal sealed record WorkerReadiness(bool HermesReady, bool ModelReady, bool StorageHealthy, string? Message);
-
-internal sealed class HermesRuntime(WorkerConfig config)
+public sealed class HermesRuntime(WorkerConfig config)
 {
     public WorkerReadiness GetReadiness()
     {
@@ -73,7 +96,7 @@ internal sealed class HermesRuntime(WorkerConfig config)
     public async Task<WorkerCompleteJobRequest> RunAsync(WorkerJobLeaseDto job, CancellationToken cancellationToken)
     {
         var readiness = GetReadiness();
-        if (!readiness.HermesReady || !readiness.ModelReady || !readiness.StorageHealthy)
+        if (!readiness.IsReady)
         {
             return new WorkerCompleteJobRequest(false, null, readiness.Message ?? "WorkerNotReady", true, CountTokens(job.Input), 0);
         }
@@ -95,16 +118,43 @@ internal sealed class HermesRuntime(WorkerConfig config)
         process.StartInfo.ArgumentList.Add(workspace);
         process.StartInfo.ArgumentList.Add("--message");
         process.StartInfo.ArgumentList.Add(job.Input);
-        process.Start();
-        var stdout = await process.StandardOutput.ReadToEndAsync(cancellationToken);
-        var stderr = await process.StandardError.ReadToEndAsync(cancellationToken);
-        await process.WaitForExitAsync(cancellationToken);
-        if (process.ExitCode != 0)
+
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeout.CancelAfter(TimeSpan.FromSeconds(Math.Clamp(job.MaxRunSeconds, 1, 86400)));
+        try
         {
-            Console.Error.WriteLine($"Hermes failed for job {job.JobId}; stderr length={stderr.Length}");
-            return new WorkerCompleteJobRequest(false, null, "HermesProcessFailed", true, CountTokens(job.Input), 0);
+            process.Start();
+            var stdoutTask = ReadBoundedAsync(process.StandardOutput, config.MaxStdoutBytes, process, timeout.Token);
+            var stderrTask = ReadBoundedAsync(process.StandardError, config.MaxStderrBytes, process, timeout.Token);
+            try
+            {
+                await process.WaitForExitAsync(timeout.Token);
+            }
+            catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+            {
+                KillProcessTree(process);
+                return new WorkerCompleteJobRequest(false, null, "TimedOut", false, CountTokens(job.Input), 0);
+            }
+
+            var stdout = await stdoutTask;
+            var stderr = await stderrTask;
+            if (stdout.Exceeded || stderr.Exceeded)
+            {
+                KillProcessTree(process);
+                return new WorkerCompleteJobRequest(false, null, stdout.Exceeded ? "StdoutLimitExceeded" : "StderrLimitExceeded", false, CountTokens(job.Input), 0);
+            }
+            if (process.ExitCode != 0)
+            {
+                Console.Error.WriteLine($"Hermes failed for job {job.JobId}; stderr length={stderr.Text.Length}");
+                return new WorkerCompleteJobRequest(false, null, "HermesProcessFailed", true, CountTokens(job.Input), 0);
+            }
+            return new WorkerCompleteJobRequest(true, stdout.Text.Trim(), null, false, CountTokens(job.Input), CountTokens(stdout.Text));
         }
-        return new WorkerCompleteJobRequest(true, stdout.Trim(), null, false, CountTokens(job.Input), CountTokens(stdout));
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            KillProcessTree(process);
+            throw;
+        }
     }
 
     private string ResolveWorkspace(string workspaceId)
@@ -118,10 +168,38 @@ internal sealed class HermesRuntime(WorkerConfig config)
         return workspace;
     }
 
+    private static async Task<BoundedReadResult> ReadBoundedAsync(StreamReader reader, int maxChars, Process process, CancellationToken cancellationToken)
+    {
+        var builder = new StringBuilder(Math.Min(maxChars, 4096));
+        var buffer = new char[Math.Min(4096, Math.Max(1, maxChars))];
+        while (true)
+        {
+            var read = await reader.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken);
+            if (read == 0) return new BoundedReadResult(builder.ToString(), false);
+            if (builder.Length + read > maxChars)
+            {
+                var allowed = Math.Max(0, maxChars - builder.Length);
+                if (allowed > 0) builder.Append(buffer, 0, allowed);
+                KillProcessTree(process);
+                return new BoundedReadResult(builder.ToString(), true);
+            }
+            builder.Append(buffer, 0, read);
+        }
+    }
+
+    private static void KillProcessTree(Process process)
+    {
+        try
+        {
+            if (!process.HasExited) process.Kill(entireProcessTree: true);
+        }
+        catch { }
+    }
+
     private static int CountTokens(string? text) => Math.Max(1, (text ?? string.Empty).Length / 4);
 }
 
-internal sealed record WorkerConfig(string ServerBaseUrl, string WorkerId, string ServiceToken, string DataRoot, string? HermesExecutablePath, int LeaseSeconds, int IdlePollSeconds, int ErrorDelaySeconds)
+public sealed record WorkerConfig(string ServerBaseUrl, string WorkerId, string ServiceToken, string DataRoot, string? HermesExecutablePath, int LeaseSeconds, int IdlePollSeconds, int ErrorDelaySeconds, int MaxStdoutBytes, int MaxStderrBytes)
 {
     public static WorkerConfig FromEnvironment(string[] args)
     {
@@ -130,8 +208,10 @@ internal sealed record WorkerConfig(string ServerBaseUrl, string WorkerId, strin
         var token = Read("VORTEX_WORKER_TOKEN", args, "--token") ?? throw new InvalidOperationException("VORTEX_WORKER_TOKEN zorunludur.");
         var dataRoot = Read("VORTEX_WORKER_DATA", args, "--data") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "VortexAI", "worker-data");
         var hermes = Read("HERMES_EXECUTABLE_PATH", args, "--hermes");
+        var maxStdout = ReadInt("Worker:MaxStdoutBytes", "VORTEX_WORKER_MAX_STDOUT_BYTES", args, "--max-stdout-bytes", 65536);
+        var maxStderr = ReadInt("Worker:MaxStderrBytes", "VORTEX_WORKER_MAX_STDERR_BYTES", args, "--max-stderr-bytes", 32768);
         Directory.CreateDirectory(dataRoot);
-        return new WorkerConfig(server, workerId, token, dataRoot, hermes, 60, 3, 10);
+        return new WorkerConfig(server, workerId, token, dataRoot, hermes, 60, 3, 10, maxStdout, maxStderr);
     }
 
     private static string? Read(string env, string[] args, string flag)
@@ -141,7 +221,15 @@ internal sealed record WorkerConfig(string ServerBaseUrl, string WorkerId, strin
         for (var i = 0; i < args.Length - 1; i++) if (args[i].Equals(flag, StringComparison.OrdinalIgnoreCase)) return args[i + 1];
         return null;
     }
+
+    private static int ReadInt(string configName, string env, string[] args, string flag, int fallback)
+    {
+        var value = Read(env, args, flag) ?? Environment.GetEnvironmentVariable(configName);
+        return int.TryParse(value, out var parsed) && parsed > 0 ? parsed : fallback;
+    }
 }
+
+public sealed record BoundedReadResult(string Text, bool Exceeded);
 
 internal static class WorkerJson
 {

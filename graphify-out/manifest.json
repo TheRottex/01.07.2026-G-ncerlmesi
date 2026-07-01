@@ -115,13 +115,13 @@
     "semantic_hash": "bf42b77e62dabb9886d3bfa5dcaf3f3f"
   },
   "Vortex.Server/Data/VortexDb.cs": {
-    "mtime": 1782914889.8899987,
-    "ast_hash": "b2a6ec1747de8858787d617eceef11c3",
+    "mtime": 1782916908.209234,
+    "ast_hash": "8bd6428583074b2f79d5e1b28870c6e9",
     "semantic_hash": ""
   },
   "Vortex.Server/Program.cs": {
-    "mtime": 1782915045.0335612,
-    "ast_hash": "7783d3f3bb312dfee68aa02564666c37",
+    "mtime": 1782916925.2641213,
+    "ast_hash": "47ea84d60ab3408475b3a4ac2d16ca6e",
     "semantic_hash": ""
   },
   "Vortex.Server/Properties/launchSettings.json": {
@@ -170,8 +170,8 @@
     "semantic_hash": "b336fa09d6346ea4c425a0d912242ad2"
   },
   "Vortex.Shared/Contracts.cs": {
-    "mtime": 1782913617.9782436,
-    "ast_hash": "2b7a9cc09f2985a8638190700b9c3aa6",
+    "mtime": 1782917083.7958055,
+    "ast_hash": "6640eca4f9a6c0cf990c509b30f6a107",
     "semantic_hash": ""
   },
   "Vortex.Shared/Vortex.Shared.csproj": {
@@ -190,8 +190,8 @@
     "semantic_hash": "8d8adafd5c2dd5780b8435e44689c8e1"
   },
   "Vortex.Tests/HermesIsolationIntegrationTests.cs": {
-    "mtime": 1782914404.5979958,
-    "ast_hash": "ec3ee2736eb83305766531e31e7d1297",
+    "mtime": 1782917315.6800296,
+    "ast_hash": "7eaae8b8629ab5942073752a459b5ab8",
     "semantic_hash": ""
   },
   "Vortex.Tests/SharedContractTests.cs": {
@@ -205,9 +205,9 @@
     "semantic_hash": "45cb83b53fc0129b642ddb27933b6b12"
   },
   "Vortex.Tests/Vortex.Tests.csproj": {
-    "mtime": 1782695586.6390712,
-    "ast_hash": "12815c235776ed8279c225ee86d37310",
-    "semantic_hash": "12815c235776ed8279c225ee86d37310"
+    "mtime": 1782917113.2708726,
+    "ast_hash": "883b1a3830bf5e6ccbb8eeace6b3b374",
+    "semantic_hash": ""
   },
   "Vortex.Web/Pages/DesktopAuthorize.cshtml": {
     "mtime": 1782695182.995139,
@@ -755,8 +755,8 @@
     "semantic_hash": "8b29407e31fabea0dbe5387234095326"
   },
   "Vortex.HermesWorker/Program.cs": {
-    "mtime": 1782914254.3059018,
-    "ast_hash": "c8c0db6d6c4f85c262daab273c6352dc",
+    "mtime": 1782917036.7341676,
+    "ast_hash": "d37478417a0cf5f90521893595a3fc4f",
     "semantic_hash": ""
   },
   "Vortex.HermesWorker/Vortex.HermesWorker.csproj": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "Vortex.Server/Services/AgentJobServices.cs": {
-    "mtime": 1782914936.1243608,
-    "ast_hash": "90be5733c7ed408810f1ba3ce8f90114",
+    "mtime": 1782917392.6624377,
+    "ast_hash": "89cb7cd4c62bfd4db13b6b2107199730",
     "semantic_hash": ""
   }
 }

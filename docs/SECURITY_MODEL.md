@@ -1,22 +1,31 @@
 # Security Model
 
 ## Amaç
-İlk dilimde uygulanan güvenlik kontrollerini ve sınırları açıklar.
+Server-worker ilk dilimindeki uygulanmış güvenlik kontrollerini ve sınırları açıklar.
 
 ## Kimlik
 Client kaynak erişimleri JWT'den türetilir; istemci UserId'sine güvenilmez. Worker erişimi `X-Vortex-Worker-Id`, timestamp, nonce ve HMAC signature ile doğrulanır.
 
-## Dosya hedef cümlesi
-`WorkerAuthenticationService` şu hedef için oluşturuldu; worker header girdilerini alır; allowed worker id, timestamp ve nonce replay doğrulaması yapar; worker endpointlerine aktarır; worker id çıktısı üretir; hata halinde unauthorized döner.
+## HMAC canonical formatı
+Ortak canonical format:
 
-## Secret yönetimi
-`Worker:ServiceToken`, `Worker:AllowedWorkerId`, model API keyleri ve worker adresleri client'a gönderilmez. Token/prompt/secret loglanmaması hedeflenir; job details yalnızca uzunluk ve id içerir.
+```text
+METHOD\nPATH_AND_QUERY\nTIMESTAMP\nNONCE\nBODY_SHA256_BASE64URL
+```
+
+Boş body için boş byte dizisinin SHA-256 değeri kullanılır. Server ve Worker `Vortex.Shared.SigningCanonical` helper'ını kullanır. İmza karşılaştırması sabit zamanlıdır.
 
 ## Replay koruması
-Nonce bellekte tutulur ve timestamp penceresi uygulanır. Process restart sonrası nonce belleği sıfırlanır; bu bilinen risktir.
+Nonce artık SQLite `WorkerReplayNonces` tablosuna kalıcı yazılır. `WorkerId + Nonce` tekrar kullanılırsa reddedilir. Süresi geçen nonce kayıtları auth sırasında temizlenir.
+
+## Job sahipliği
+Worker completion yalnızca işi claim eden worker, aktif status ve geçerli lease ile kabul edilir. Kullanıcı job sonucunu yalnızca JWT owner query ile okuyabilir.
+
+## Secret ve loglama
+Worker token, signature, ham body, prompt ve tam result audit loglara yazılmaz. Audit kayıtları id/status/uzunluk seviyesindedir. Process stderr içeriği loglanmaz, sadece uzunluk/hata kodu kullanılır.
 
 ## Rate/limit
 Plan daily run ve concurrent run kontrolleri server tarafında uygulanır. Geniş HTTP rate limit middleware'i bu dilimde yoktur.
 
 ## Bilinen riskler
-Tam veri sızıntısı imkânsız iddiası yoktur. Result alanı SQLite içinde plaintext saklanır; hassas veri şifreleme ve backup encryption sonraki dilimde gerekir.
+`AgentJobs.Result` SQLite içinde plaintext saklanır. Symlink/junction hardening ve encrypted backup sonraki dilimde gerekir.

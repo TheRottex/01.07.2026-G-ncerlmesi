@@ -3103,6 +3103,19 @@
           "bin/placeholder/Vortex.Desktop.dll": {}
         }
       },
+      "Vortex.HermesWorker/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Vortex.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Vortex.HermesWorker.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Vortex.HermesWorker.dll": {}
+        }
+      },
       "Vortex.Server/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -8866,6 +8879,11 @@
       "path": "../Vortex.Desktop/Vortex.Desktop.csproj",
       "msbuildProject": "../Vortex.Desktop/Vortex.Desktop.csproj"
     },
+    "Vortex.HermesWorker/1.0.0": {
+      "type": "project",
+      "path": "../Vortex.HermesWorker/Vortex.HermesWorker.csproj",
+      "msbuildProject": "../Vortex.HermesWorker/Vortex.HermesWorker.csproj"
+    },
     "Vortex.Server/1.0.0": {
       "type": "project",
       "path": "../Vortex.Server/Vortex.Server.csproj",
@@ -8883,6 +8901,7 @@
       "Microsoft.Data.Sqlite >= 8.0.22",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "Vortex.Desktop >= 1.0.0",
+      "Vortex.HermesWorker >= 1.0.0",
       "Vortex.Server >= 1.0.0",
       "Vortex.Shared >= 1.0.0",
       "coverlet.collector >= 6.0.0",
@@ -8919,6 +8938,9 @@
           "projectReferences": {
             "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\Vortex.Desktop\\Vortex.Desktop.csproj": {
               "projectPath": "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\Vortex.Desktop\\Vortex.Desktop.csproj"
+            },
+            "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\Vortex.HermesWorker\\Vortex.HermesWorker.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\Vortex.HermesWorker\\Vortex.HermesWorker.csproj"
             },
             "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\Vortex.Server\\Vortex.Server.csproj": {
               "projectPath": "C:\\Users\\User\\Desktop\\Avlone Uı VortexAI\\Vortex.Server\\Vortex.Server.csproj"

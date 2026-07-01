@@ -30,6 +30,7 @@
   "28": "Community 28",
   "29": "Community 29",
   "30": "Community 30",
+  "31": "MainWindowViewModel.cs",
   "32": "Community 32",
   "33": "Community 33",
   "34": "Community 34",
@@ -54,7 +55,10 @@
   "53": "Community 53",
   "54": "Community 54",
   "55": "Community 55",
+  "56": "MainWindow.axaml.cs",
   "57": "Community 57",
+  "58": "SigningCanonical",
+  "59": "HttpContextAuthExtensions",
   "60": "Community 60",
   "61": "Community 61",
   "62": "Community 62",
@@ -89,5 +93,7 @@
   "91": "Community 91",
   "92": "Community 92",
   "93": "Community 93",
-  "94": "Community 94"
+  "94": "Community 94",
+  "95": "Class1.cs",
+  "96": "Class1.cs"
 }
